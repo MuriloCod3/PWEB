@@ -1,8 +1,5 @@
 let jogadorNome;
-
 let jogadorEscolha = 0;
-
-let computadorPontos = 0;
 let computadorEscolha;
 
 function mensagem(texto) {
