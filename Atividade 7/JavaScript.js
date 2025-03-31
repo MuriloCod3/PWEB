@@ -1,22 +1,20 @@
-var jogadorNome;
-var jogadorPontos = 0;
-var jogadorEscolha = 0;
+let jogadorNome;
 
-var computadorPontos = 0;
-var computadorEscolha;
+let jogadorEscolha = 0;
 
+let computadorPontos = 0;
+let computadorEscolha;
 
 function mensagem(texto) {
-    document.getElementById('mensagem').innerHTML = texto;
+    document.querySelector('.mensagem').innerHTML = texto;
 }
-
 
 function definirNomeJogador(nome) {
-    document.getElementById('jogador-nome').innerHTML = nome;
+    document.querySelector('.jogador-nome').innerHTML = nome;
 }
 
-function sortear(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+function sortear() {
+    return Math.floor(Math.random() * 3) + 1;
 }
 
 function calcularEscolha(jogador, computador) {
@@ -49,35 +47,32 @@ function calcularEscolha(jogador, computador) {
     }
 }
 
-
 function selecionar(tipo, escolha) {
-    document.getElementById(tipo + '-escolha-' + escolha).classList.add('selecionado');
+    document.querySelector(`.${tipo}-escolha-${escolha}`).classList.add('selecionado');
 }
 
 function deselecionar(tipo, escolha) {
-    document.getElementById(tipo + '-escolha-' + escolha).classList.remove('selecionado');
+    document.querySelector(`.${tipo}-escolha-${escolha}`).classList.remove('selecionado');
 }
 
 function jogar(escolha) {
     jogadorEscolha = escolha;
     selecionar('jogador', jogadorEscolha);
-    
-    computadorEscolha = sortear(1, 3); 
-    selecionar('computador', computadorEscolha)
 
-    var ganhador = calcularEscolha(jogadorEscolha, computadorEscolha);
-    
+    computadorEscolha = sortear();
+    selecionar('computador', computadorEscolha);
+
+    let ganhador = calcularEscolha(jogadorEscolha, computadorEscolha);
+
     if (ganhador == 0) {
         mensagem('Empate');
-    }
-    else if (ganhador == 1) {
-        mensagem('Ponto para ' + jogadorNome)
-    }
-    else if (ganhador == 2) {
-        mensagem('Ponto para o Computador')
+    } else if (ganhador == 1) {
+        mensagem('Ponto para ' + jogadorNome);
+    } else if (ganhador == 2) {
+        mensagem('Ponto para o Computador');
     }
 
-    setTimeout(function() { 
+    setTimeout(function () {
         deselecionar('jogador', jogadorEscolha);
         deselecionar('computador', computadorEscolha);
 
@@ -85,11 +80,11 @@ function jogar(escolha) {
     }, 1000);
 }
 
-document.getElementById('jogador-escolha-1').onclick = function() { jogar(1); };
-document.getElementById('jogador-escolha-2').onclick = function() { jogar(2); };
-document.getElementById('jogador-escolha-3').onclick = function() { jogar(3); };
+document.querySelector('.jogador-escolha-1').onclick = function () { jogar(1); };
+document.querySelector('.jogador-escolha-2').onclick = function () { jogar(2); };
+document.querySelector('.jogador-escolha-3').onclick = function () { jogar(3); };
 
-jogadorNome = prompt('Qual é o seu nome?')
+jogadorNome = prompt('Qual é o seu nome?');
 
-mensagem('Bem vindo ' + jogadorNome + ' está preparado? Escolha uma opcção acima...');
+mensagem('Bem-vindo ' + jogadorNome + ' está preparado? Escolha uma opção acima...');
 definirNomeJogador(jogadorNome);
