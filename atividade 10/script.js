@@ -1,7 +1,26 @@
 function calcularIMC(peso, altura) {
       return peso / (altura * altura);
   }
+
+function exibirResultado(event) {
+      event.preventDefault(); 
   
+      let peso = parseFloat(document.getElementById('peso').value);
+      let altura = parseFloat(document.getElementById('altura').value);
+  
+      if (isNaN(peso) || isNaN(altura) || peso <= 0 || altura <= 0) {
+          alert("Valor Inválido!!");
+          return;
+      }
+  
+      let imc = calcularIMC(peso, altura);
+      let { classificacao, grau } = obterClassificacao(imc);
+  
+      document.getElementById('imc').innerText = `IMC: ${imc.toFixed(2)}`;
+      document.getElementById('classificacao').innerText = `Classificação: ${classificacao}`;
+      document.getElementById('grau').innerText = `Grau de obesidade: ${grau}`;
+ }
+
   function obterClassificacao(imc) {
       let classificacao = '';
       let grau = '';
@@ -27,23 +46,5 @@ function calcularIMC(peso, altura) {
       }
       return { classificacao, grau };
   }
-  
-  function exibirResultado(event) {
-      event.preventDefault(); 
-  
-      let peso = parseFloat(document.getElementById('peso').value);
-      let altura = parseFloat(document.getElementById('altura').value);
-  
-      if (isNaN(peso) || isNaN(altura) || peso <= 0 || altura <= 0) {
-          alert("Valor Inválido!!");
-          return;
-      }
-  
-      let imc = calcularIMC(peso, altura);
-      let { classificacao, grau } = obterClassificacao(imc);
-  
-      document.getElementById('imc').innerText = `IMC: ${imc.toFixed(2)}`;
-      document.getElementById('classificacao').innerText = `Classificação: ${classificacao}`;
-      document.getElementById('grau').innerText = `Grau de obesidade: ${grau}`;
-  }
+
   document.getElementById('imcForm').addEventListener('submit', exibirResultado);
