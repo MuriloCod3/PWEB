@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício - Construtores e Herança</title>
+    <style>
+        body {
+            font-family: Verdana, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+
+        input, button {
+            margin: 5px 0;
+            padding: 8px;
+            font-size: 14px;
+            display: block;
+        }
+
+        h2 {
+            color: #2c3e50;
+        }
+
+        p {
+            font-size: 16px;
+            color: #333;
+        }
+
+        hr {
+            margin: 30px 0;
+        }
+    </style>
+</head>
+<body>
+
+<h2>1. Construtor de Retângulo</h2>
+
+<p>Informe os valores de base e altura:</p>
+<input type="number" id="valorBase" placeholder="Informe a base" />
+<input type="number" id="valorAltura" placeholder="Informe a altura" />
+<button onclick="gerarArea()">Exibir Área</button>
+
+<p id="saidaRetangulo"></p>
+
+<hr>
+
+<h2>2. Herança com Contas Bancárias</h2>
+
+<p>Dados da Conta Corrente:</p>
+<input type="text" id="titularCorrente" placeholder="Nome do titular" />
+<input type="text" id="instituicaoCorrente" placeholder="Banco" />
+<input type="number" id="contaCorrenteNum" placeholder="Número da conta" />
+<input type="number" id="saldoCorrenteValor" placeholder="Saldo atual" />
+<button onclick="montarContaCorrente()">Registrar Corrente</button>
+
+<p id="exibirCorrente"></p>
+
+<hr>
+
+<p>Dados da Conta Poupança:</p>
+<input type="text" id="titularPoupanca" placeholder="Nome do titular" />
+<input type="text" id="instituicaoPoupanca" placeholder="Banco" />
+<input type="number" id="contaPoupancaNum" placeholder="Número da conta" />
+<input type="number" id="saldoPoupancaValor" placeholder="Saldo atual" />
+<input type="number" id="rendimentoPoupanca" placeholder="Taxa de juros (%)" />
+<input type="text" id="validadePoupanca" placeholder="Vencimento (ex: 15/07/2025)" />
+<button onclick="montarContaPoupanca()">Registrar Poupança</button>
+
+<p id="exibirPoupanca"></p>
+
+<script src="script.js"></script>
+
+</body>
+</html>
