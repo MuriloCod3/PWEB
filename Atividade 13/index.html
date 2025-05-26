@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Atividade13 - Janela </title>
+    <style>
+        body {
+            text-align: center;
+            background-color: #bebecf;
+            height: 90vh;
+        }
+        h1 {
+            color: rgb(36, 34, 34);
+            margin-top: 50px;
+        }
+
+      
+        #janela {
+            width: 300px;
+            height: 300px;
+            background-image: url('janela_fechada.jpg');
+            background-size: cover;
+            margin: 50px auto;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+        #legenda {
+            font-size: 24px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="legenda">Abre a Janela</h1>
+    <div id="janelas">
+        <img id="janela" src="fechada.jfif" alt="Janela" />
+
+    </div>
+
+    <script>
+        const janela = document.getElementById('janela');
+        const legenda = document.getElementById('legenda');
+
+        janela.addEventListener('mouseenter', () => {
+            janela.src = 'aberta.jpg';
+            legenda.textContent = 'Janela Aberta';
+        });
+
+        janela.addEventListener('mouseleave', () => {
+            janela.src = 'fechada.jfif';
+            legenda.textContent = 'Janela Fechada';
+        });
+
+        janela.addEventListener('click', () => {
+            janela.src = 'quebrada.jpg';
+            legenda.textContent = 'Janela Quebrada';
+        });
+    </script>
+</body>
+</html>
